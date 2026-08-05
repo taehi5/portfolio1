@@ -27,6 +27,33 @@ function App() {
             <span>KIM TAEHEE</span>
           </h1>
         </section>
+
+        <section className="about" id="about">
+          <div className="section-heading">
+            <p>01 · ABOUT</p>
+            <h2>About Me</h2>
+          </div>
+
+          <div className="about-grid">
+            <article className="about-card">
+              <span>EDUCATION</span>
+              <h3>이화여자대학교</h3>
+              <p>통계학 전공 · 인공지능학 복수전공 · 수학과 부전공 </p>
+            </article>
+
+            <article className="about-card">
+              <span>FOCUS</span>
+              <h3>Data Analysis</h3>
+              <p>데이터 분석</p>
+            </article>
+
+            <article className="about-card">
+              <span>TOOLS</span>
+              <h3>Python · R</h3>
+              <p>데이터 분석 및 통계 프로그래밍</p>
+            </article>
+          </div>
+        </section>
       </main>
     </div>
   )
