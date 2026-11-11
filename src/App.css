@@ -231,6 +231,8 @@
 }
 
 .project-card {
+  text-decoration: none;
+  color: inherit;
   position: relative;
   min-height: 280px;
   padding: 30px;
@@ -241,6 +243,25 @@
     transform 0.25s ease,
     border-color 0.25s ease,
     box-shadow 0.25s ease;
+}
+
+.project-detail { width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 56px 0 120px; min-height: calc(100vh - 160px); }
+.detail-back { display: inline-block; color: #586174; text-decoration: none; padding: 12px 0; margin-bottom: 64px; }
+.detail-back:hover { color: #3157d5; }
+.project-detail h1 { margin: 0; max-width: 1000px; font-size: clamp(36px, 6vw, 76px); line-height: 1.2; letter-spacing: -0.05em; word-break: keep-all; overflow-wrap: anywhere; }
+.project-detail h1:focus { outline: none; }
+.detail-subtitle { color: #697386; font-size: 20px; line-height: 1.6; margin: 24px 0 0; }
+.detail-body { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; margin-top: 64px; padding-top: 48px; border-top: 1px solid #dfe3e8; }
+.detail-overview h2 { font-size: 22px; margin: 0 0 24px; }
+.detail-overview p { color: #586174; line-height: 1.9; margin: 0; }
+.detail-facts { margin: 0; }
+.detail-facts > div { padding: 0 0 24px; }
+.detail-facts dt { font-size: 13px; color: #697386; margin-bottom: 10px; }
+.detail-facts dd { margin: 0; line-height: 1.7; }
+@media (max-width: 700px) {
+  .project-detail { width: calc(100% - 40px); padding: 32px 0 80px; }
+  .detail-back { margin-bottom: 40px; }
+  .detail-body { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; padding-top: 32px; }
 }
 
 .project-card:hover {

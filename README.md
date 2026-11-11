@@ -16,6 +16,8 @@
 
 한국어·영어 전환과 모바일 레이아웃을 지원합니다.
 
+프로젝트 카드를 누르면 개별 상세 페이지가 열립니다. 예: [MBTI 예측 프로그램](https://taehi5.github.io/portfolio1/#project/mbti-prediction). 상세 페이지는 확인된 소개·분류·활동 정보와 결과를 표시하며, 목록 복귀·브라우저 뒤로 가기·상세 주소 직접 접속을 지원합니다. 이전 상세 본문은 저장소 이력에서 찾지 못해 복원하지 않았습니다.
+
 ## 등록된 프로젝트
 
 | 구분 | 수업 / 활동 | 프로젝트 | 확인된 상태 |
@@ -43,6 +45,7 @@
 - LG Aimers 9기 종료 및 본선 미진출 결과 반영
 - 프로젝트 데이터를 `src/projects.js`로 분리
 - GitHub Pages 하위 경로 설정 및 자동 빌드·배포 워크플로 추가
+- 프로젝트 카드에 개별 상세 페이지 연결, 상세 주소·목록 복귀·없는 프로젝트 안내 추가
 - 프로덕션 빌드와 ESLint 검사 통과
 
 ## 남은 작업
@@ -93,10 +96,13 @@ npm run preview
 
 ```js
 {
+  id: 'unique-project-id',
   course: '수업 또는 활동명',
   englishCourse: 'Course or activity name',
   title: '프로젝트명',
   englishTitle: 'Project title',
+  summary: '확인된 프로젝트 소개',
+  englishSummary: 'Verified project summary',
 }
 ```
 

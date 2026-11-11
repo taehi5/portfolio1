@@ -2,12 +2,40 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { academicProjects, externalProjects } from './projects'
 
+const allProjects = [...academicProjects, ...externalProjects]
+
 function App() {
   const [language, setLanguage] = useState('ko')
+  const [hash, setHash] = useState(() => window.location.hash)
   const english = language === 'en'
+  const detailRoute = hash.startsWith('#project/')
+  const selectedProject = detailRoute
+    ? allProjects.find((project) => `#project/${project.id}` === hash)
+    : null
+  useEffect(() => {
+    const updateHash = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', updateHash)
+    return () => window.removeEventListener('hashchange', updateHash)
+  }, [])
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      if (detailRoute) {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+        document.getElementById('project-heading')?.focus({ preventScroll: true })
+      } else {
+        document.getElementById(hash.slice(1) || 'home')?.scrollIntoView()
+      }
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [hash, detailRoute])
   useEffect(() => {
     document.documentElement.lang = language
   }, [language])
+  useEffect(() => {
+    document.title = selectedProject
+      ? `${english ? selectedProject.englishTitle : selectedProject.title} | Kim Taehee`
+      : '김태희 | Data Analysis & AI Portfolio'
+  }, [selectedProject, english])
   return (
     <div className="portfolio">
       <header className="header">
@@ -27,6 +55,33 @@ function App() {
       </header>
 
       <main>
+        {detailRoute ? (
+          <section className="project-detail">
+            <a className="detail-back" href="#projects">← {english ? 'All projects' : '프로젝트 목록'}</a>
+            {selectedProject ? (
+              <>
+                <p className="hero-label">{english ? selectedProject.englishCourse : selectedProject.course}</p>
+                <h1 id="project-heading" tabIndex={-1}>{english ? selectedProject.englishTitle : selectedProject.title}</h1>
+                {!english && <p className="detail-subtitle">{selectedProject.englishTitle}</p>}
+                <div className="detail-body">
+                  <section className="detail-overview">
+                    <h2>{english ? 'Overview' : '프로젝트 소개'}</h2>
+                    <p>{english ? selectedProject.englishSummary : selectedProject.summary}</p>
+                  </section>
+                  <dl className="detail-facts">
+                    <div><dt>{english ? 'Category' : '분류'}</dt><dd>{academicProjects.includes(selectedProject) ? (english ? 'Academic project' : '전공 프로젝트') : (english ? 'Competition / hackathon' : '대외 프로젝트')}</dd></div>
+                    <div><dt>{english ? 'Course / Activity' : '수업 / 활동'}</dt><dd>{english ? selectedProject.englishCourse : selectedProject.course}</dd></div>
+                    {selectedProject.status && <div><dt>{english ? 'Status' : '상태'}</dt><dd>{english ? 'Completed' : '종료'}</dd></div>}
+                    {selectedProject.result && <div><dt>{english ? 'Result' : '결과'}</dt><dd>{english ? selectedProject.englishResult : selectedProject.result}</dd></div>}
+                  </dl>
+                </div>
+              </>
+            ) : (
+              <h1 id="project-heading" tabIndex={-1}>{english ? 'Project not found' : '프로젝트를 찾을 수 없습니다'}</h1>
+            )}
+          </section>
+        ) : (
+          <>
         <section className="hero" id="home">
           <p className="hero-label">DATA ANALYSIS · AI PORTFOLIO</p>
           <h1>
@@ -80,16 +135,17 @@ function App() {
 
             <div className="project-grid">
               {academicProjects.map((project) => (
-                <article className="project-card" key={project.title}>
+                <a className="project-card" href={`#project/${project.id}`} key={project.id}>
                   <div className="project-card-top">
                     <span>{english ? project.englishCourse : project.course}</span>
+                    <span className="project-arrow" aria-hidden="true">↗</span>
                   </div>
 
                   <div className="project-title">
                     <h4>{english ? project.englishTitle : project.title}</h4>
                     {!english && <p>{project.englishTitle}</p>}
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
@@ -105,12 +161,12 @@ function App() {
 
             <div className="project-grid">
               {externalProjects.map((project) => (
-                <article className="project-card" key={project.title}>
+                <a className="project-card" href={`#project/${project.id}`} key={project.id}>
                   <div className="project-card-top">
                     <span>{english ? project.englishCourse : project.course}</span>
                     {project.status ? (
                       <span className="status">{english ? 'COMPLETED' : '종료'}</span>
-                    ) : null}
+                    ) : <span className="project-arrow" aria-hidden="true">↗</span>}
                   </div>
 
                   <div className="project-title">
@@ -118,7 +174,7 @@ function App() {
                     {!english && <p>{project.englishTitle}</p>}
                     {project.result && <p className="project-result">{english ? project.englishResult : project.result}</p>}
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
@@ -128,6 +184,8 @@ function App() {
           <p>{english ? 'Find my work and repositories on GitHub.' : 'GitHub에서 작업과 저장소를 확인할 수 있습니다.'}</p>
           <a className="primary-link" href="https://github.com/taehi5" target="_blank" rel="noreferrer">GitHub · @taehi5 <span aria-hidden="true">↗</span></a>
         </section>
+          </>
+        )}
       </main>
       <footer className="footer">© {new Date().getFullYear()} Kim Taehee</footer>
     </div>

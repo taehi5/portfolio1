@@ -1,17 +1,26 @@
 export const academicProjects = [
   {
+    id: 'mbti-prediction',
+    summary: 'MBTI 유형 예측을 주제로 한 통계 프로그래밍 프로젝트입니다.',
+    englishSummary: 'A statistical programming project on MBTI type prediction.',
     course: '통계 프로그래밍',
     englishCourse: 'Statistical Programming',
     title: 'MBTI 예측 프로그램',
     englishTitle: 'MBTI Prediction Program',
   },
   {
+    id: 'income-prediction',
+    summary: '연 소득 수준 예측을 주제로 한 패턴인식 프로젝트입니다.',
+    englishSummary: 'A pattern recognition project on annual income level prediction.',
     course: '패턴인식',
     englishCourse: 'Pattern Recognition',
     title: '연 소득 수준 예측',
     englishTitle: 'Income Level Prediction',
   },
   {
+    id: 'subway-congestion',
+    summary: '지하철 혼잡도 예측을 주제로 한 데이터사이언스 프로젝트입니다.',
+    englishSummary: 'A data science project on subway congestion prediction.',
     course: '데이터사이언스',
     englishCourse: 'Data Science',
     title: '지하철 혼잡도 예측',
@@ -21,12 +30,18 @@ export const academicProjects = [
 
 export const externalProjects = [
   {
+    id: 'customer-churn',
+    summary: '신촌 연합 해커톤에서 진행한 고객 이탈 예측 프로젝트입니다.',
+    englishSummary: 'A customer churn prediction project from the Sinchon Joint Hackathon.',
     course: '신촌 연합 해커톤',
     englishCourse: 'Sinchon Joint Hackathon',
     title: '고객 이탈 예측',
     englishTitle: 'Customer Churn Prediction',
   },
   {
+    id: 'pitch-control',
+    summary: 'LG Aimers 9기에서 진행한 투구 제구 성공 확률 예측 프로젝트입니다.',
+    englishSummary: 'A pitch control success probability prediction project from the 9th LG Aimers cohort.',
     course: 'LG Aimers 9기',
     englishCourse: 'LG Aimers · 9th Cohort',
     title: '투구 제구 성공 확률 예측',
@@ -36,6 +51,9 @@ export const externalProjects = [
     englishResult: 'Online stage participation · Did not advance to the finals',
   },
   {
+    id: 'han-river-accessibility',
+    summary: '2026 서울시 빅데이터 공모전의 한강공원 보행 접근성 분석 프로젝트입니다.',
+    englishSummary: 'A Han River park pedestrian accessibility analysis project for the 2026 Seoul Big Data Competition.',
     course: '2026 서울시 빅데이터 공모전',
     englishCourse: '2026 Seoul Big Data Competition',
     title: '한강공원 보행 접근성 분석',
