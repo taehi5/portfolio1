@@ -46,6 +46,8 @@ function App() {
         <nav className="navigation" aria-label={english ? 'Main navigation' : '주 메뉴'}>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
+          <a href="#societies">{english ? 'Societies' : '학회'}</a>
+          <a href="#certifications">{english ? 'Certifications' : '자격증'}</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -117,21 +119,6 @@ function App() {
               <p>{english ? 'Data analysis & statistical programming' : '데이터 분석 및 통계 프로그래밍'}</p>
             </article>
           </div>
-          <div className="about-background">
-            <article className="background-item">
-              <h3>{english ? 'Academic Societies' : '학회'}</h3>
-              <ul className="background-list">
-                <li>ESAA</li>
-                <li>EURON</li>
-              </ul>
-            </article>
-            <article className="background-item">
-              <h3>{english ? 'Certifications' : '자격증'}</h3>
-              <ul className="background-list">
-                <li>ADsP</li>
-              </ul>
-            </article>
-          </div>
         </section>
                 <section className="projects" id="projects">
           <div className="section-heading">
@@ -194,8 +181,27 @@ function App() {
             </div>
           </div>
         </section>
+        <section className="profile-section" id="societies">
+          <div className="section-heading">
+            <p>03 · {english ? 'SOCIETIES' : '학회'}</p>
+            <h2>{english ? 'Academic Societies' : '학회'}</h2>
+          </div>
+          <ul className="profile-list">
+            <li>ESAA</li>
+            <li>EURON</li>
+          </ul>
+        </section>
+        <section className="profile-section" id="certifications">
+          <div className="section-heading">
+            <p>04 · {english ? 'CERTIFICATIONS' : '자격증'}</p>
+            <h2>{english ? 'Certifications' : '자격증'}</h2>
+          </div>
+          <ul className="profile-list">
+            <li>ADsP</li>
+          </ul>
+        </section>
         <section className="contact" id="contact">
-          <div className="section-heading"><p>03 · CONTACT</p><h2>Let's connect.</h2></div>
+          <div className="section-heading"><p>05 · CONTACT</p><h2>Let's connect.</h2></div>
           <p>{english ? 'Find my work and repositories on GitHub.' : 'GitHub에서 작업과 저장소를 확인할 수 있습니다.'}</p>
           <a className="primary-link" href="https://github.com/taehi5" target="_blank" rel="noreferrer">GitHub · @taehi5 <span aria-hidden="true">↗</span></a>
         </section>
