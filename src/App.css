@@ -141,6 +141,15 @@
   gap: 20px;
 }
 
+.about-background { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+.background-item { border-top: 1px solid #dfe3e8; padding-top: 24px; }
+.background-item h3 { margin: 0 0 20px; font-size: 18px; letter-spacing: -0.02em; }
+.background-list { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.background-list li { padding: 10px 18px; border: 1px solid #dfe3e8; border-radius: 8px; background: #fff; color: #3157d5; font-weight: 600; }
+@media (max-width: 700px) {
+  .about-background { grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+}
+
 .about-card {
   min-height: 230px;
   padding: 32px;

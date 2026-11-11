@@ -117,6 +117,21 @@ function App() {
               <p>{english ? 'Data analysis & statistical programming' : '데이터 분석 및 통계 프로그래밍'}</p>
             </article>
           </div>
+          <div className="about-background">
+            <article className="background-item">
+              <h3>{english ? 'Academic Societies' : '학회'}</h3>
+              <ul className="background-list">
+                <li>ESAA</li>
+                <li>EURON</li>
+              </ul>
+            </article>
+            <article className="background-item">
+              <h3>{english ? 'Certifications' : '자격증'}</h3>
+              <ul className="background-list">
+                <li>ADsP</li>
+              </ul>
+            </article>
+          </div>
         </section>
                 <section className="projects" id="projects">
           <div className="section-heading">
